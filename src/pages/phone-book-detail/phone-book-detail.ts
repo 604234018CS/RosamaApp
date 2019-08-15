@@ -1,3 +1,5 @@
+import { SMS } from '@ionic-native/sms/ngx';
+import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
@@ -17,7 +19,7 @@ export class PhoneBookDetailPage {
 
   contact = {name:'', telephone:'', imgeUrl:''};
 
-  constructor(public navCtrl: NavController, public navP: NavParams) {
+  constructor(public navCtrl: NavController, public navP: NavParams,private mysms: SMS,private barcodeScanner: BarcodeScanner) {
   }
 
   ionViewDidLoad() {
@@ -25,5 +27,12 @@ export class PhoneBookDetailPage {
     this.contact = this.navP.data
     console.log(this.contact);
   }
+
+  call(){
+    alert("call");
+    window.open('tel:'+this.contact.telephone);
+  }
+
+
 
 }//end class
